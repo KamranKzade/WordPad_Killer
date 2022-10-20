@@ -31,7 +31,6 @@
             this.label_font = new System.Windows.Forms.Label();
             this.label_size = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbox_font = new System.Windows.Forms.ComboBox();
             this.cbox_size = new System.Windows.Forms.ComboBox();
             this.btn_bold = new System.Windows.Forms.Button();
             this.btn_underLine = new System.Windows.Forms.Button();
@@ -41,17 +40,22 @@
             this.btn_center = new System.Windows.Forms.Button();
             this.btn_right = new System.Windows.Forms.Button();
             this.label_Color = new System.Windows.Forms.Label();
-            this.cbox_color = new System.Windows.Forms.ComboBox();
-            this.btn_load = new System.Windows.Forms.Button();
+            this.btn_save = new System.Windows.Forms.Button();
             this.btn_open = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.check_Font = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.SuspendLayout();
             // 
             // label_font
             // 
             this.label_font.AutoSize = true;
             this.label_font.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_font.Location = new System.Drawing.Point(35, 9);
+            this.label_font.Location = new System.Drawing.Point(24, 9);
             this.label_font.Name = "label_font";
             this.label_font.Size = new System.Drawing.Size(48, 23);
             this.label_font.TabIndex = 0;
@@ -61,7 +65,7 @@
             // 
             this.label_size.AutoSize = true;
             this.label_size.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_size.Location = new System.Drawing.Point(149, 9);
+            this.label_size.Location = new System.Drawing.Point(170, 9);
             this.label_size.Name = "label_size";
             this.label_size.Size = new System.Drawing.Size(46, 23);
             this.label_size.TabIndex = 0;
@@ -77,21 +81,26 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "FontStyle";
             // 
-            // cbox_font
-            // 
-            this.cbox_font.FormattingEnabled = true;
-            this.cbox_font.Location = new System.Drawing.Point(10, 35);
-            this.cbox_font.Name = "cbox_font";
-            this.cbox_font.Size = new System.Drawing.Size(94, 28);
-            this.cbox_font.TabIndex = 1;
-            // 
             // cbox_size
             // 
+            this.cbox_size.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox_size.FormattingEnabled = true;
-            this.cbox_size.Location = new System.Drawing.Point(125, 35);
+            this.cbox_size.Items.AddRange(new object[] {
+            "      9",
+            "      10",
+            "      11",
+            "      12",
+            "      14",
+            "      16",
+            "      18",
+            "      20",
+            "      22",
+            "      24"});
+            this.cbox_size.Location = new System.Drawing.Point(158, 34);
             this.cbox_size.Name = "cbox_size";
-            this.cbox_size.Size = new System.Drawing.Size(94, 28);
+            this.cbox_size.Size = new System.Drawing.Size(76, 28);
             this.cbox_size.TabIndex = 1;
+            this.cbox_size.SelectedIndexChanged += new System.EventHandler(this.cbox_size_SelectedIndexChanged);
             // 
             // btn_bold
             // 
@@ -102,6 +111,7 @@
             this.btn_bold.TabIndex = 2;
             this.btn_bold.Text = "B";
             this.btn_bold.UseVisualStyleBackColor = true;
+            this.btn_bold.Click += new System.EventHandler(this.btn_Font_Style_Click);
             // 
             // btn_underLine
             // 
@@ -112,6 +122,7 @@
             this.btn_underLine.TabIndex = 2;
             this.btn_underLine.Text = "U";
             this.btn_underLine.UseVisualStyleBackColor = true;
+            this.btn_underLine.Click += new System.EventHandler(this.btn_Font_Style_Click);
             // 
             // btn_italic
             // 
@@ -122,6 +133,7 @@
             this.btn_italic.TabIndex = 2;
             this.btn_italic.Text = "I";
             this.btn_italic.UseVisualStyleBackColor = true;
+            this.btn_italic.Click += new System.EventHandler(this.btn_Font_Style_Click);
             // 
             // label_alignment
             // 
@@ -142,6 +154,7 @@
             this.btn_left.TabIndex = 2;
             this.btn_left.Text = "L";
             this.btn_left.UseVisualStyleBackColor = true;
+            this.btn_left.Click += new System.EventHandler(this.btn_Aligment_Click);
             // 
             // btn_center
             // 
@@ -152,6 +165,7 @@
             this.btn_center.TabIndex = 2;
             this.btn_center.Text = "C";
             this.btn_center.UseVisualStyleBackColor = true;
+            this.btn_center.Click += new System.EventHandler(this.btn_Aligment_Click);
             // 
             // btn_right
             // 
@@ -162,34 +176,28 @@
             this.btn_right.TabIndex = 2;
             this.btn_right.Text = "R";
             this.btn_right.UseVisualStyleBackColor = true;
+            this.btn_right.Click += new System.EventHandler(this.btn_Aligment_Click);
             // 
             // label_Color
             // 
             this.label_Color.AutoSize = true;
             this.label_Color.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Color.Location = new System.Drawing.Point(504, 9);
+            this.label_Color.Location = new System.Drawing.Point(500, 11);
             this.label_Color.Name = "label_Color";
             this.label_Color.Size = new System.Drawing.Size(57, 23);
             this.label_Color.TabIndex = 0;
             this.label_Color.Text = "Color";
             // 
-            // cbox_color
+            // btn_save
             // 
-            this.cbox_color.FormattingEnabled = true;
-            this.cbox_color.Location = new System.Drawing.Point(484, 35);
-            this.cbox_color.Name = "cbox_color";
-            this.cbox_color.Size = new System.Drawing.Size(94, 28);
-            this.cbox_color.TabIndex = 1;
-            // 
-            // btn_load
-            // 
-            this.btn_load.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_load.Location = new System.Drawing.Point(604, 35);
-            this.btn_load.Name = "btn_load";
-            this.btn_load.Size = new System.Drawing.Size(63, 29);
-            this.btn_load.TabIndex = 2;
-            this.btn_load.Text = "Load";
-            this.btn_load.UseVisualStyleBackColor = true;
+            this.btn_save.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_save.Location = new System.Drawing.Point(604, 35);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(63, 29);
+            this.btn_save.TabIndex = 2;
+            this.btn_save.Text = "Save";
+            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // btn_open
             // 
@@ -200,6 +208,7 @@
             this.btn_open.TabIndex = 2;
             this.btn_open.Text = "Open";
             this.btn_open.UseVisualStyleBackColor = true;
+            this.btn_open.Click += new System.EventHandler(this.btn_open_Click);
             // 
             // textBox1
             // 
@@ -209,12 +218,42 @@
             this.textBox1.Size = new System.Drawing.Size(756, 359);
             this.textBox1.TabIndex = 3;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // check_Font
+            // 
+            this.check_Font.AutoSize = true;
+            this.check_Font.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.check_Font.Location = new System.Drawing.Point(13, 35);
+            this.check_Font.Name = "check_Font";
+            this.check_Font.Size = new System.Drawing.Size(139, 27);
+            this.check_Font.TabIndex = 4;
+            this.check_Font.Text = "Change Font";
+            this.check_Font.UseVisualStyleBackColor = true;
+            this.check_Font.CheckedChanged += new System.EventHandler(this.check_Font_CheckedChanged);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBox2.Location = new System.Drawing.Point(460, 37);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(148, 27);
+            this.checkBox2.TabIndex = 4;
+            this.checkBox2.Text = "Change Color";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.check_Font);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btn_right);
             this.Controls.Add(this.btn_center);
@@ -222,11 +261,9 @@
             this.Controls.Add(this.btn_italic);
             this.Controls.Add(this.btn_underLine);
             this.Controls.Add(this.btn_open);
-            this.Controls.Add(this.btn_load);
+            this.Controls.Add(this.btn_save);
             this.Controls.Add(this.btn_bold);
-            this.Controls.Add(this.cbox_color);
             this.Controls.Add(this.cbox_size);
-            this.Controls.Add(this.cbox_font);
             this.Controls.Add(this.label_Color);
             this.Controls.Add(this.label_alignment);
             this.Controls.Add(this.label2);
@@ -244,7 +281,6 @@
         private Label label_font;
         private Label label_size;
         private Label label2;
-        private ComboBox cbox_font;
         private ComboBox cbox_size;
         private Button btn_bold;
         private Button btn_underLine;
@@ -254,9 +290,14 @@
         private Button btn_center;
         private Button btn_right;
         private Label label_Color;
-        private ComboBox cbox_color;
-        private Button btn_load;
+        private Button btn_save;
         private Button btn_open;
         private TextBox textBox1;
+        private OpenFileDialog openFileDialog1;
+        private SaveFileDialog saveFileDialog1;
+        private CheckBox check_Font;
+        private CheckBox checkBox2;
+        private FontDialog fontDialog1;
+        private ColorDialog colorDialog1;
     }
 }
